@@ -62,7 +62,7 @@ class ModelDeployment():
 
         #str | Search filter is an optional HTTP parameter to filter results by. Supported search_filter = {\"model_name\": \"model_name\"}  search_filter = {\"creator_id\": \"<sso name or user name>\"}. (optional)
 
-        search_filter = {"creator_id" : self.username, "model_name": "AsthmaticBronchCLF-"+self.username}
+        search_filter = {"creator_id" : self.username, "model_name": "CellTwrFail-CLF-"+self.username}
         search = json.dumps(search_filter)
         page_size = 1000
 
@@ -93,7 +93,7 @@ class ModelDeployment():
         return api_response
 
 
-    def createModel(self, projectId, modelName, registeredModelId, description = "AsthmaticBronchCLF 2024"):
+    def createModel(self, projectId, modelName, registeredModelId, description = "CellTwrFail 2024"):
         """
         Method to create a model
         """
@@ -182,7 +182,6 @@ class ModelDeployment():
 projectId = os.environ['CDSW_PROJECT_ID']
 username = os.environ["PROJECT_OWNER"]
 sessionId = secrets.token_hex(nbytes=4)
-#modelName = "AsthmaticBronchCLF-" + username
 modelName = "CellTwrFail-CLF-" + username
 
 deployment = ModelDeployment(projectId, username)
@@ -206,4 +205,4 @@ modelBuildId = createModelBuildResponse.id
 deployment.createModelDeployment(modelBuildId, projectId, modelCreationId)
 
 ## NOW TRY A REQUEST WITH THIS PAYLOAD!
-#{"dataframe_split": {"columns": ["cd8_perc", "cd19_perc", "cd45_abs_count", "cd3_perc", "cd19_abs_count","iga", "c3", "cd4_abs_count", "cd16cd56_perc", "cd8_abs_count", "cd4_ratio_cd8", "age", "cd3_abs_count","igm", "cd4_perc", "tige", "ch50", "c4", "cd16cd56_abs_count", "allergy_hist", "lung_compl", "gender"], "data":[[0.5, 0.6, 2.5, 0.5, 0.1, 0.5, 0.2, 0.5, 0.5, 0.5, 0.5, 0.5, 120.5, 12.5, 1.3, 6.4, 0.1, 0.2, 0.3, 1.5, 2.1, 2.5]]}}
+#{"dataframe_split": {"columns": ["iot_signal_1", "iot_signal_2", "iot_signal_3", "iot_signal_4"], "data":[[35.5, 200.5, 30.5, 14.5]]}}
